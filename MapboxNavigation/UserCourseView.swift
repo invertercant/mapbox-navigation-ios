@@ -19,8 +19,8 @@ public protocol UserCourseView where Self: UIView {
     @objc optional func update(location: CLLocation, pitch: CGFloat, direction: CLLocationDegrees, animated: Bool, tracksUserCourse: Bool)
 }
 
-extension UIView {
-    func applyDefaultUserPuckTransformation(location: CLLocation, pitch: CGFloat, direction: CLLocationDegrees, animated: Bool, tracksUserCourse: Bool) {
+public extension UIView {
+    @objc func applyDefaultUserPuckTransformation(location: CLLocation, pitch: CGFloat, direction: CLLocationDegrees, animated: Bool, tracksUserCourse: Bool) {
         let duration: TimeInterval = animated ? 1 : 0
         UIView.animate(withDuration: duration, delay: 0, options: [.beginFromCurrentState, .curveLinear], animations: {
             let angle = tracksUserCourse ? 0 : CLLocationDegrees(direction - location.course)
@@ -78,7 +78,7 @@ public class UserPuckCourseView: UIView, UserCourseView {
         }
     }
     
-    var puckView: UserPuckStyleKitView!
+    public var puckView: UserPuckStyleKitView!
     
     public override init(frame: CGRect) {
         super.init(frame: frame)
@@ -99,7 +99,7 @@ public class UserPuckCourseView: UIView, UserCourseView {
     }
 }
 
-class UserPuckStyleKitView: UIView {
+public class UserPuckStyleKitView: UIView {
     
     var fillColor: UIColor = UIColor(red: 1.000, green: 1.000, blue: 1.000, alpha: 1.000) {
         didSet {
