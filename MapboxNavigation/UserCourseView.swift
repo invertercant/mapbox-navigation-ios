@@ -119,7 +119,7 @@ public class UserPuckStyleKitView: UIView {
         }
     }
     
-    override func draw(_ rect: CGRect) {
+    public override func draw(_ rect: CGRect) {
         super.draw(rect)
         drawNavigation_puck(fillColor: fillColor, puckColor: puckColor, shadowColor: shadowColor, circleColor: fillColor)
     }
